@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { company } from '../model/company';
 
 @Component({
   selector: 'app-company-form',
@@ -7,7 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyFormComponent implements OnInit {
 
-  constructor() { }
+  companyList: company[];
+  companyForm: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder
+  ) {
+    this.companyList = [];
+
+    this.companyForm = formBuilder.group({
+      name: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      tags: ['', [Validators.required]]
+    });
+  }
 
   ngOnInit(): void {
   }
