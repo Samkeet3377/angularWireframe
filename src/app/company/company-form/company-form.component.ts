@@ -11,11 +11,13 @@ export class CompanyFormComponent implements OnInit {
 
   companyList: company[];
   companyForm: FormGroup;
+  isSubmit: boolean;
 
   constructor(
     private formBuilder: FormBuilder
   ) {
     this.companyList = [];
+    this.isSubmit = false;
 
     this.companyForm = formBuilder.group({
       name: ['', [Validators.required]],
@@ -25,6 +27,10 @@ export class CompanyFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  formSubmit(){
+    this.isSubmit = true;
   }
 
 }

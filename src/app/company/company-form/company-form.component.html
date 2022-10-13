@@ -1,16 +1,26 @@
 <div class="d-flex align-items-center justify-content-center h-100">
-  <form [formGroup]="companyForm" (ngSubmit)="(companyForm)">
+  <form [formGroup]="companyForm" (ngSubmit)="formSubmit()">
 
     <div class="row my-3">
       <div class="col">
-        <input type="text" class="form-control" placeholder="Company Name" formControlName="name" required>
+        <input type="text" class="form-control" placeholder="Company Name" formControlName="name" required
+          [ngClass]="{ 'is-valid': companyForm.controls['name'].valid ,
+          'is-invalid': companyForm.controls['name'].invalid  && companyForm.controls['name'].touched }">
       </div>
+    </div>
+    <div class="text-danger" *ngIf="companyForm.controls['name'].invalid || companyForm.controls['name'].touched">
+      <span *ngIf="isSubmit && companyForm.controls['name'].invalid ">This field id Required</span>
     </div>
 
     <div class="row my-3">
       <div class="col">
-        <textarea name="description" cols="30" rows="5" class="form-control" placeholder="Company Description" formControlName="description" required></textarea>
+        <textarea name="description" cols="30" rows="5" class="form-control" placeholder="Company Description" formControlName="description" required
+          [ngClass]="{ 'is-valid': companyForm.controls['description'].valid ,
+          'is-invalid': companyForm.controls['description'].invalid  && companyForm.controls['description'].touched }"></textarea>
       </div>
+    </div>
+    <div class="text-danger" *ngIf="companyForm.controls['description'].invalid || companyForm.controls['description'].touched">
+      <span *ngIf="isSubmit && companyForm.controls['name'].invalid ">This field id Required</span>
     </div>
 
     <div class="row my-3">
@@ -21,14 +31,15 @@
 
     <div class="row my-3">
       <div class="col">
-        <input type="file" class="form-control" formControlName="selectTags" required>
+        <input type="file" class="form-control">
+        <!-- formControlName="selectTags" required -->
       </div>
     </div>
 
     <div class="row my-3 float-end">
       <div class="col">
         <button type="reset" class="btn btn-outline-danger me-3">Reset</button>
-        <button type="submit" class="btn btn-outline-primary">Save</button>
+        <button type="submit" class="btn btn-outline-primary">Add</button>
       </div>
     </div>
 
