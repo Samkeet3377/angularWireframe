@@ -1,10 +1,28 @@
 {
   "company": [
     {
-      "id": 1,
       "name": "samkeet kevat",
       "description": "front-end",
-      "tags": "unknown"
+      "tags": "known",
+      "id": 1
+    },
+    {
+      "name": "ravi singh",
+      "description": "front-end",
+      "tags": "unknown",
+      "id": 2
+    },
+    {
+      "name": "amresh Prasad",
+      "description": "front-end",
+      "tags": "unknown",
+      "id": 3
+    },
+    {
+      "name": "ayush",
+      "description": "front-end",
+      "tags": "logo",
+      "id": 4
     }
   ]
 }

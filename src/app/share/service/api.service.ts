@@ -36,5 +36,9 @@ export class ApiService {
     const url = this.baseUrl + 'company/' + id;
     return this.http.put<company>(url, data);
   }
-
+  //
+  fetchCompanyDataById( id: number): Observable<company> {
+    const url = this.baseUrl + 'company/' + id;
+    return this.http.get<company>(url);
+  }
 }
