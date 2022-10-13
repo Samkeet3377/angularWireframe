@@ -1,3 +1,10 @@
 {
-  "company": []
+  "company": [
+    {
+      "id": 1,
+      "name": "samkeet kevat",
+      "description": "front-end",
+      "tags": "unknown"
+    }
+  ]
 }
