@@ -22,7 +22,13 @@ export class CompanyListComponent implements OnInit {
 
   getCompanyList() {
     this.dataService.getCompanyData().subscribe((result) => {
-      this.companyData = result; console.log(result);
+      this.companyData = result;
+    });
+  }
+
+  deleteCompanyList(id: number) {
+    this.dataService.deleteCompanyData(id).subscribe((result) => {
+      this.getCompanyList();
     });
   }
 
