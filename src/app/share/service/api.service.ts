@@ -28,12 +28,12 @@ export class ApiService {
   }
   // delete data from API
   deleteCompanyData(id: number): Observable<company> {
-    const url = this.baseUrl + 'company' + id;
+    const url = this.baseUrl + 'company/' + id;
     return this.http.delete<company>(url);
   }
   // update data to API
   updateCompanyData(data: company, id: number): Observable<company> {
-    const url = this.baseUrl + 'company' + id;
+    const url = this.baseUrl + 'company/' + id;
     return this.http.put<company>(url, data);
   }
 

@@ -18,9 +18,9 @@
   <div class="px-4 py-2 d-flex align-items-center justify-content-between border border-1 border-dark"
     *ngFor="let user of companyData">
     <div class="rounded-circle border border-dark logo"> <span class="text-dark">{{ user.name | uppercase | slice:0:2 }}</span> </div>
-    <div> <span> {{ user.name | titlecase }} </span> </div>
-    <div>
-      <a class="bi bi-person-x-fill text-dark fs-4"></a>
+    <div> <span routerLink="add"> {{ user.name | titlecase }} </span> </div>
+    <div class="cur">
+      <a class="bi bi-person-x-fill text-dark fs-4" (click)="deleteCompanyList(user.id)"></a>
     </div>
   </div>
 </div>
