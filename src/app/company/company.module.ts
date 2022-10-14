@@ -6,10 +6,11 @@ import { CompanyRoutingModule } from './company-routing.module';
 import { CompanyComponent } from './company.component';
 import { CompanyListComponent } from './company-list/company-list.component';
 import { CompanyFormComponent } from './company-form/company-form.component';
-import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from '../share/service/api.service';
 import { ShareModule } from '../share/share.module';
-
+import {NgSelectModule} from '@ng-select/ng-select'
+import { SubjectDataService } from '../share/service/subject-data.service';
 
 @NgModule({
   declarations: [
@@ -23,10 +24,12 @@ import { ShareModule } from '../share/share.module';
     ReactiveFormsModule,
     HttpClientModule,
     ShareModule,
-    FormsModule
+    FormsModule,
+    NgSelectModule
   ],
   providers: [
-    ApiService
+    ApiService,
+    SubjectDataService
   ]
 })
 export class CompanyModule { }
