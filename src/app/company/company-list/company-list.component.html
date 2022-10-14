@@ -9,16 +9,16 @@
       </div>
     </div>
     <div class="my-2">
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search">
+      <form class="d-flex" role="search" >
+        <input class="form-control me-2" type="search" placeholder="Search" name="data" [(ngModel)]="data" >
       </form>
     </div>
   </div>
 
   <div class="px-4 py-2 d-flex align-items-center justify-content-between border border-1 border-dark"
-    *ngFor="let user of companyData">
-    <div class="rounded-circle border border-dark logo"> <span class="text-dark">{{ user.name | uppercase | slice:0:2 }}</span> </div>
-    <div> <span [routerLink]="['edit/' + user.id]"> {{ user.name | titlecase }} </span> </div>
+  *ngFor="let user of companyData | getFilter: data ">
+    <div class="rounded-circle border border-dark logo"> <span class="text-dark">{{ user.name | getIntial }}</span> </div>
+    <div> <span class="cur" [routerLink]="['edit/' + user.id]"> {{ user.name | titlecase }} </span> </div>
     <div class="cur">
       <a class="bi bi-person-x-fill text-dark fs-4" (click)="deleteCompanyList(user.id)"></a>
     </div>

@@ -1,28 +1,22 @@
 {
   "company": [
     {
-      "name": "samkeet kevat",
-      "description": "front-end",
-      "tags": "known",
-      "id": 1
-    },
-    {
-      "name": "ravi singh",
-      "description": "front-end",
-      "tags": "unknown",
-      "id": 2
-    },
-    {
       "name": "amresh Prasad",
       "description": "front-end",
       "tags": "unknown",
       "id": 3
     },
     {
-      "name": "ayush",
+      "name": "ayush dhimmar",
       "description": "front-end",
-      "tags": "logo",
+      "tags": "logo, samsung",
       "id": 4
+    },
+    {
+      "name": "ravi singh",
+      "description": "front-end",
+      "tags": "known, iphone",
+      "id": 5
     }
   ]
 }
