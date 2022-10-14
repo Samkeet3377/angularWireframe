@@ -6,8 +6,9 @@ import { CompanyRoutingModule } from './company-routing.module';
 import { CompanyComponent } from './company.component';
 import { CompanyListComponent } from './company-list/company-list.component';
 import { CompanyFormComponent } from './company-form/company-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from '../share/service/api.service';
+import { ShareModule } from '../share/share.module';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import { ApiService } from '../share/service/api.service';
     CommonModule,
     CompanyRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ShareModule,
+    FormsModule
   ],
   providers: [
     ApiService

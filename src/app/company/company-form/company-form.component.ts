@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/share/service/api.service';
 import { company } from '../model/company';
 
@@ -20,7 +20,8 @@ export class CompanyFormComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     public dataService: ApiService,
-    public actRoute: ActivatedRoute
+    public actRoute: ActivatedRoute,
+    public router: Router,
   ) {
     this.companyList = [];
     this.isSubmit = false;
@@ -60,6 +61,7 @@ export class CompanyFormComponent implements OnInit {
   }
   addCompanyData(){
     this.dataService.addCompanyData(this.companyForm.value).subscribe((result)=> {
+      this.router.navigate(['../company'],{ relativeTo: this.actRoute.parent });
     });
   }
 
@@ -71,6 +73,7 @@ export class CompanyFormComponent implements OnInit {
 
   updateCompanyData() {
     this.dataService.updateCompanyData(this.companyForm.value, this.id).subscribe((result)=> {
+      this.router.navigate(['../company'],{ relativeTo: this.actRoute.parent })
     });
   }
 
