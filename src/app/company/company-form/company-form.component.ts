@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/share/service/api.service';
+import { SubjectDataService } from 'src/app/share/service/subject-data.service';
 import { company } from '../model/company';
 
 @Component({
@@ -17,11 +18,22 @@ export class CompanyFormComponent implements OnInit {
   id: number;
   btnName: string;
 
+  selectedCars = [3];
+  cars = [
+      { id: 1, name: 'Volvo' },
+      { id: 2, name: 'Saab', },
+      { id: 3, name: 'Select Tags' ,disabled: true  },
+      { id: 4, name: 'Audi' },
+  ];
+
+
   constructor(
     public formBuilder: FormBuilder,
     public dataService: ApiService,
     public actRoute: ActivatedRoute,
     public router: Router,
+    public setData: SubjectDataService,
+
   ) {
     this.companyList = [];
     this.isSubmit = false;
@@ -31,7 +43,8 @@ export class CompanyFormComponent implements OnInit {
     this.companyForm = formBuilder.group({
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      tags: ['', ]
+      tags: [''],
+      selectTags: ['']
     });
 
     this.actRoute.params.subscribe((result)=> {
@@ -61,6 +74,7 @@ export class CompanyFormComponent implements OnInit {
   }
   addCompanyData(){
     this.dataService.addCompanyData(this.companyForm.value).subscribe((result)=> {
+      this.setData.getCompany.next(result);
       this.router.navigate(['../company'],{ relativeTo: this.actRoute.parent });
     });
   }
@@ -73,6 +87,7 @@ export class CompanyFormComponent implements OnInit {
 
   updateCompanyData() {
     this.dataService.updateCompanyData(this.companyForm.value, this.id).subscribe((result)=> {
+      this.setData.updateCompany.next(result);
       this.router.navigate(['../company'],{ relativeTo: this.actRoute.parent })
     });
   }

@@ -31,8 +31,15 @@
 
     <div class="row my-3">
       <div class="col">
-        <input type="file" class="form-control">
+        <!-- <input type="file" class="form-control" multiple> -->
         <!-- formControlName="selectTags" required -->
+        <!-- <ng-select [multiple]="true" [(ngModel)]="selectedCars" placeholder="select Tags">
+          <ng-option *ngFor="let car of cars" [value]="car.id">{{car.name}}</ng-option>
+      </ng-select> -->
+      <ng-select [multiple]="true"  class="form-control" formControlName="selectTags">
+        <ng-option [disabled]="true">select Option</ng-option>
+        <ng-option *ngFor="let car of cars" [value]="car.id">{{car.name}}</ng-option>
+      </ng-select>
       </div>
     </div>
 
