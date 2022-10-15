@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoreModule } from './core/core.module';
 import { ShareModule } from './share/share.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,15 @@ import { ShareModule } from './share/share.module';
     AppRoutingModule,
     NgbModule,
     CoreModule,
-    ShareModule
+    ShareModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      "closeButton": true,
+      "progressBar": true,
+      "timeOut": 3000,
+      "extendedTimeOut": 1000,
+      "positionClass": "toast-top-center"
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

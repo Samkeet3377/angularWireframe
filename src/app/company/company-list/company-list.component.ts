@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgModel } from '@angular/forms';
+// import { NgModel } from '@angular/forms';
 import { ApiService } from 'src/app/share/service/api.service';
+import { NotificationService } from 'src/app/share/service/notification.service';
 import { SubjectDataService } from 'src/app/share/service/subject-data.service';
 import { company } from '../model/company';
 
@@ -17,7 +18,8 @@ export class CompanyListComponent implements OnInit {
 
   constructor(
     private dataService: ApiService,
-    private setData: SubjectDataService
+    private setData: SubjectDataService,
+    public toast: NotificationService
   ) {
     this.companyData = [];
     this.data = ''
@@ -46,8 +48,14 @@ export class CompanyListComponent implements OnInit {
 
   deleteCompanyList(id: number) {
     this.dataService.deleteCompanyData(id).subscribe((result) => {
+      confirm('Are you sure to delete ');
       this.getCompanyList();
+      this.toastWarning();
     });
+  }
+
+  toastWarning(){
+    this.toast.showWarning('Data Deleted','Message');
   }
 
 }
