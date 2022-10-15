@@ -1,12 +1,6 @@
 {
   "company": [
     {
-      "name": "ayush dhimmar",
-      "description": "front-end",
-      "tags": "logo, samsung",
-      "id": 4
-    },
-    {
       "name": "ravi singh",
       "description": "front-end",
       "tags": "known, iphone",
@@ -15,14 +9,14 @@
     {
       "name": "amresh prasad",
       "description": "front-end",
-      "tags": "known, on",
+      "tags": "known, onfield",
       "selectTags": "",
       "id": 6
     },
     {
       "name": "samkeet kevat",
-      "description": "asdfg",
-      "tags": "asdf",
+      "description": "front-end",
+      "tags": "samsung",
       "selectTags": "",
       "id": 7
     }
