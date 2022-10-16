@@ -19,12 +19,15 @@ export class CompanyFormComponent implements OnInit {
   id: number;
   btnName: string;
 
-  selectedCars = [3];
-  cars = [
-    { id: 1, name: 'Volvo' },
-    { id: 2, name: 'Saab', },
-    { id: 3, name: 'Select Tags', disabled: true },
-    { id: 4, name: 'Audi' },
+  selectedTags = [3];
+  tags = [
+    { id: 1, name: 'Front-End' },
+    { id: 2, name: 'Back-End' },
+    { id: 3, name: 'UI-UX' },
+    { id: 4, name: 'BA' },
+    { id: 4, name: 'QA' },
+    { id: 4, name: 'DevOps' },
+    { id: 4, name: 'Database' },
   ];
 
 
@@ -44,7 +47,6 @@ export class CompanyFormComponent implements OnInit {
     this.companyForm = formBuilder.group({
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      tags: [''],
       selectTags: ['']
     });
 
@@ -102,6 +104,9 @@ export class CompanyFormComponent implements OnInit {
     this.companyForm.reset();
     this.isSubmit = false;
   }
+  back() {
+    this.router.navigate(['../company'], { relativeTo: this.actRoute.parent })
+  }
 
   toastSuccess() {
     this.toast.showSuccess('Company Added Successfully', 'Message');
@@ -109,8 +114,8 @@ export class CompanyFormComponent implements OnInit {
   toastError() {
     this.toast.showError('Something Went Wrong', 'Message');
   }
-  toastInfo(){
-    this.toast.showInfo('Data Updated Successfully','Message')
+  toastInfo() {
+    this.toast.showInfo('Data Updated Successfully', 'Message')
   }
 
 }

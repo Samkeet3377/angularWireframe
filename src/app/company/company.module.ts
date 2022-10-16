@@ -13,13 +13,15 @@ import { NgSelectModule } from '@ng-select/ng-select'
 import { SubjectDataService } from '../share/service/subject-data.service';
 // import { ToastrModule } from 'ngx-toastr';
 import { NotificationService } from '../share/service/notification.service';
+import { CompanyDetailComponent } from './company-detail/company-detail.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     CompanyComponent,
     CompanyListComponent,
-    CompanyFormComponent
+    CompanyFormComponent,
+    CompanyDetailComponent
   ],
   imports: [
     CommonModule,

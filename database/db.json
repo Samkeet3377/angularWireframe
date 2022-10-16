@@ -4,20 +4,21 @@
       "name": "ravi singh",
       "description": "front-end",
       "tags": "known, iphone",
+      "selectTags": [],
       "id": 5
     },
     {
       "name": "amresh prasad",
       "description": "front-end",
       "tags": "known, onfield",
-      "selectTags": "",
+      "selectTags": [],
       "id": 6
     },
     {
       "name": "samkeet kevat",
       "description": "front-end",
       "tags": "samsung",
-      "selectTags": "",
+      "selectTags": [],
       "id": 7
     }
   ]

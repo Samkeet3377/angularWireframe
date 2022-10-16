@@ -1,11 +1,11 @@
-<div class="sidebar">
+<div class="sidebar h-100">
   <div class="border border-1 border-dark p-2">
     <div class="d-flex align-items-center justify-content-between">
       <div>
         <span class="fs-5">Company</span>
       </div>
       <div>
-        <a class="bi bi-person-plus-fill text-dark fs-4" routerLink="./add"></a>
+        <a class="bi bi-person-plus text-dark fs-4" routerLink="./add"></a>
       </div>
     </div>
     <div class="my-2">
@@ -17,10 +17,10 @@
 
   <div class="px-4 py-2 d-flex align-items-center justify-content-between border border-1 border-dark"
   *ngFor="let user of companyData | getFilter: data ">
-    <div class="rounded-circle border border-dark logo"> <span class="text-dark">{{ user.name | getIntial }}</span> </div>
+    <div class="rounded-circle border border-dark logo"> <span class="text-dark cur" [routerLink]="['detail/' + user.id]">{{ user.name | getIntial }}</span> </div>
     <div> <span class="cur" [routerLink]="['edit/' + user.id]"> {{ user.name | titlecase }} </span> </div>
     <div class="cur">
-      <a class="bi bi-person-x-fill text-dark fs-4" (click)="deleteCompanyList(user.id)"></a>
+      <a class="bi bi-person-x text-dark fs-4" (click)="deleteCompanyList(user.id)"></a>
     </div>
   </div>
 </div>
