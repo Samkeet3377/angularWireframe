@@ -46,9 +46,9 @@ export class CompanyListComponent implements OnInit {
     });
   }
 
-  deleteCompanyList(id: number) {
-    this.dataService.deleteCompanyData(id).subscribe((result) => {
-      confirm('Are you sure to delete ');
+  deleteCompanyList(data: company) {
+    this.dataService.deleteCompanyData(data.id).subscribe((result) => {
+      confirm('Are you sure to delete ' + data.name + ' !?');
       this.getCompanyList();
       this.toastWarning();
     });
@@ -56,6 +56,14 @@ export class CompanyListComponent implements OnInit {
 
   toastWarning(){
     this.toast.showWarning('Data Deleted','Message');
+  }
+
+  getColor() {
+    var length = 6;
+    var chars = '0123456789ABCDEF';
+    var hex = '#';
+    while(length--) hex += chars[(Math.random() * 16) | 0];
+    return hex;
   }
 
 }

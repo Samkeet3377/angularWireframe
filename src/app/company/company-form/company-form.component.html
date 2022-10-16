@@ -38,7 +38,7 @@
           <div class="col">
             <ng-select [multiple]="true" class="form-control" formControlName="selectTags">
               <ng-option [disabled]="true">---Select---</ng-option>
-              <ng-option *ngFor="let tag of tags" [value]="tag.id">{{tag.name}}</ng-option>
+              <ng-option *ngFor="let tag of tags" [value]="tag.name">{{tag.name}}</ng-option>
             </ng-select>
           </div>
         </div>
