@@ -16,11 +16,13 @@
   </div>
 
   <div class="px-4 py-2 d-flex align-items-center justify-content-between border border-1 border-dark"
-  *ngFor="let user of companyData | getFilter: data ">
-    <div class="rounded-circle border border-dark logo"> <span class="text-dark cur" [routerLink]="['detail/' + user.id]">{{ user.name | getIntial }}</span> </div>
+  *ngFor="let user of companyData | getFilter: data " [ngStyle]="{ 'color': getColor() }">
+    <div class="rounded-circle border border-dark logo">
+      <span class="text-dark cur" [routerLink]="['detail/' + user.id]">{{ user.name | getIntial }}</span>
+    </div>
     <div> <span class="cur" [routerLink]="['edit/' + user.id]"> {{ user.name | titlecase }} </span> </div>
     <div class="cur">
-      <a class="bi bi-person-x text-dark fs-4" (click)="deleteCompanyList(user.id)"></a>
+      <a class="bi bi-person-x text-dark fs-4" (click)="deleteCompanyList(user)"></a>
     </div>
   </div>
 </div>

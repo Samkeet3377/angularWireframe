@@ -1,4 +1,6 @@
 {
+  "admin":[ { "id":1, "email":"admin@admin.com","password":"admin" } ],
+  "user":[ { "id":1, "email":"user1@user.com","password":"user@123" } ],
   "company": [
     {
       "name": "ravi singh",
@@ -16,10 +18,12 @@
     },
     {
       "name": "samkeet kevat",
-      "description": "front-end",
-      "tags": "samsung",
-      "selectTags": [],
-      "id": 7
+      "description": "sports, gaming",
+      "selectTags": [
+        "Back-End",
+        "Front-End"
+      ],
+      "id": 9
     }
   ]
 }
