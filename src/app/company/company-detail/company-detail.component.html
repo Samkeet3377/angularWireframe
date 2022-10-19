@@ -1,0 +1,17 @@
+<div class="d-flex align-items-center justify-content-center h-100 bgclr">
+  <div class="card bg-white shadow" style="width: 280px;">
+    <div class="card-header text-muted">
+      <h4>Company Details</h4>
+    </div>
+    <div class="card-body">
+      <div class="my-2">
+        <h5>Name:</h5> <span class="card-text">{{ companyList.name }}</span>
+        <h5>Description:</h5> <span class="card-text">{{ companyList.description }}</span>
+        <h5>Tags:</h5> <span class="card-text"> {{ companyList.selectTags }} </span>
+      </div>
+      <div class="m-2 float-end">
+        <button type="button" class="btn btn-sm btn-outline-info" (click)="back()">Back</button>
+      </div>
+    </div>
+  </div>
+</div>

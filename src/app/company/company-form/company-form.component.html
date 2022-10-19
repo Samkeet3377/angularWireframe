@@ -1,54 +1,57 @@
-<div class="d-flex align-items-center justify-content-center h-100">
-  <form [formGroup]="companyForm" (ngSubmit)="formSubmit()">
+<div class="d-flex align-items-center justify-content-center h-100 bgclr">
+  <div class="card bg-white p-2 shadow ">
+    <div class="card-body">
 
-    <div class="row my-3">
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Company Name" formControlName="name" required
-          [ngClass]="{ 'is-valid': companyForm.controls['name'].valid ,
+      <form [formGroup]="companyForm" (ngSubmit)="formSubmit()">
+
+        <div class="row my-3">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Company Name" formControlName="name" required
+              [ngClass]="{ 'is-valid': companyForm.controls['name'].valid ,
           'is-invalid': companyForm.controls['name'].invalid  && companyForm.controls['name'].touched }">
-      </div>
-    </div>
-    <div class="text-danger" *ngIf="companyForm.controls['name'].invalid || companyForm.controls['name'].touched">
-      <span *ngIf="isSubmit && companyForm.controls['name'].invalid ">This field id Required</span>
-    </div>
+          </div>
+        </div>
+        <div class="text-danger" *ngIf="companyForm.controls['name'].invalid || companyForm.controls['name'].touched">
+          <span *ngIf="isSubmit && companyForm.controls['name'].invalid ">This field id Required</span>
+        </div>
 
-    <div class="row my-3">
-      <div class="col">
-        <textarea name="description" cols="30" rows="5" class="form-control" placeholder="Company Description" formControlName="description" required
-          [ngClass]="{ 'is-valid': companyForm.controls['description'].valid ,
+        <div class="row my-3">
+          <div class="col">
+            <textarea name="description" cols="30" rows="5" class="form-control" placeholder="Company Description"
+              formControlName="description" required
+              [ngClass]="{ 'is-valid': companyForm.controls['description'].valid ,
           'is-invalid': companyForm.controls['description'].invalid  && companyForm.controls['description'].touched }"></textarea>
-      </div>
-    </div>
-    <div class="text-danger" *ngIf="companyForm.controls['description'].invalid || companyForm.controls['description'].touched">
-      <span *ngIf="isSubmit && companyForm.controls['name'].invalid ">This field id Required</span>
-    </div>
+          </div>
+        </div>
+        <div class="text-danger"
+          *ngIf="companyForm.controls['description'].invalid || companyForm.controls['description'].touched">
+          <span *ngIf="isSubmit && companyForm.controls['name'].invalid ">This field id Required</span>
+        </div>
 
-    <div class="row my-3">
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Company tag" formControlName="tags">
-      </div>
-    </div>
+        <!-- <div class="row my-3">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Company tag" formControlName="tags">
+          </div>
+        </div> -->
 
-    <div class="row my-3">
-      <div class="col">
-        <!-- <input type="file" class="form-control" multiple> -->
-        <!-- formControlName="selectTags" required -->
-        <!-- <ng-select [multiple]="true" [(ngModel)]="selectedCars" placeholder="select Tags">
-          <ng-option *ngFor="let car of cars" [value]="car.id">{{car.name}}</ng-option>
-      </ng-select> -->
-      <ng-select [multiple]="true"  class="form-control" formControlName="selectTags">
-        <ng-option [disabled]="true">select Option</ng-option>
-        <ng-option *ngFor="let car of cars" [value]="car.id">{{car.name}}</ng-option>
-      </ng-select>
-      </div>
-    </div>
+        <div class="row my-3">
+          <div class="col">
+            <ng-select [multiple]="true" class="form-control" formControlName="selectTags">
+              <ng-option [disabled]="true">---Select---</ng-option>
+              <ng-option *ngFor="let tag of tags" [value]="tag.name">{{tag.name}}</ng-option>
+            </ng-select>
+          </div>
+        </div>
 
-    <div class="row my-3 float-end">
-      <div class="col">
-        <button type="reset" class="btn btn-outline-danger me-3">Reset</button>
-        <button type="submit" class="btn btn-outline-primary">{{btnName}}</button>
-      </div>
-    </div>
+        <div class="row my-3 float-end">
+          <div class="col">
+            <button type="reset" class="btn btn-outline-danger me-3">Reset</button>
+            <button type="submit" class="btn btn-outline-primary me-3">{{btnName}}</button>
+            <button type="button" class="btn btn-outline-info" (click)="back()">Back</button>
+          </div>
+        </div>
 
-  </form>
+      </form>
+    </div>
+  </div>
 </div>

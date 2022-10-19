@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/share/service/api.service';
+import { NotificationService } from 'src/app/share/service/notification.service';
 import { SubjectDataService } from 'src/app/share/service/subject-data.service';
 import { company } from '../model/company';
 
@@ -18,12 +19,15 @@ export class CompanyFormComponent implements OnInit {
   id: number;
   btnName: string;
 
-  selectedCars = [3];
-  cars = [
-      { id: 1, name: 'Volvo' },
-      { id: 2, name: 'Saab', },
-      { id: 3, name: 'Select Tags' ,disabled: true  },
-      { id: 4, name: 'Audi' },
+  selectedTags = [3];
+  tags = [
+    { id: 1, name: 'Front-End' },
+    { id: 2, name: 'Back-End' },
+    { id: 3, name: 'UI-UX' },
+    { id: 4, name: 'BA' },
+    { id: 4, name: 'QA' },
+    { id: 4, name: 'DevOps' },
+    { id: 4, name: 'Database' },
   ];
 
 
@@ -33,7 +37,7 @@ export class CompanyFormComponent implements OnInit {
     public actRoute: ActivatedRoute,
     public router: Router,
     public setData: SubjectDataService,
-
+    public toast: NotificationService
   ) {
     this.companyList = [];
     this.isSubmit = false;
@@ -43,13 +47,12 @@ export class CompanyFormComponent implements OnInit {
     this.companyForm = formBuilder.group({
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      tags: [''],
       selectTags: ['']
     });
 
-    this.actRoute.params.subscribe((result)=> {
+    this.actRoute.params.subscribe((result) => {
       this.id = result['id'];
-      if(this.id){
+      if (this.id) {
         this.dataById();
         this.btnName = 'Edit'
       }
@@ -59,40 +62,60 @@ export class CompanyFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  formSubmit(){
+  formSubmit() {
     this.isSubmit = true;
-    if(this.companyForm.valid){
-      if(this.id) {
+    if (this.companyForm.valid) {
+      if (this.id) {
         this.updateCompanyData();
+        this.toastInfo();
       }
-      else{
+      else {
         this.addCompanyData();
+        this.toastSuccess();
       }
       this.isSubmit = false;
     }
+    else {
+      this.toastError();
+    }
     this.onReset();
   }
-  addCompanyData(){
-    this.dataService.addCompanyData(this.companyForm.value).subscribe((result)=> {
+  addCompanyData() {
+    this.dataService.addCompanyData(this.companyForm.value).subscribe((result) => {
       this.setData.getCompany.next(result);
-      this.router.navigate(['../company'],{ relativeTo: this.actRoute.parent });
+      this.router.navigate(['../company'], { relativeTo: this.actRoute.parent });
     });
   }
 
   dataById() {
-    this.dataService.fetchCompanyDataById(this.id).subscribe((result)=> {
+    this.dataService.fetchCompanyDataById(this.id).subscribe((result) => {
       this.companyForm.patchValue(result);
     });
   }
 
   updateCompanyData() {
-    this.dataService.updateCompanyData(this.companyForm.value, this.id).subscribe((result)=> {
+    this.dataService.updateCompanyData(this.companyForm.value, this.id).subscribe((result) => {
       this.setData.updateCompany.next(result);
-      this.router.navigate(['../company'],{ relativeTo: this.actRoute.parent })
+      this.router.navigate(['../company'], { relativeTo: this.actRoute.parent })
     });
   }
 
-  onReset(){
+  onReset() {
     this.companyForm.reset();
+    this.isSubmit = false;
   }
+  back() {
+    this.router.navigate(['../company'], { relativeTo: this.actRoute.parent })
+  }
+
+  toastSuccess() {
+    this.toast.showSuccess('Company Added Successfully', 'Message');
+  }
+  toastError() {
+    this.toast.showError('Something Went Wrong', 'Message');
+  }
+  toastInfo() {
+    this.toast.showInfo('Data Updated Successfully', 'Message')
+  }
+
 }

@@ -9,14 +9,17 @@ import { CompanyFormComponent } from './company-form/company-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from '../share/service/api.service';
 import { ShareModule } from '../share/share.module';
-import {NgSelectModule} from '@ng-select/ng-select'
+import { NgSelectModule } from '@ng-select/ng-select'
 import { SubjectDataService } from '../share/service/subject-data.service';
+import { NotificationService } from '../share/service/notification.service';
+import { CompanyDetailComponent } from './company-detail/company-detail.component';
 
 @NgModule({
   declarations: [
     CompanyComponent,
     CompanyListComponent,
-    CompanyFormComponent
+    CompanyFormComponent,
+    CompanyDetailComponent
   ],
   imports: [
     CommonModule,
@@ -25,11 +28,12 @@ import { SubjectDataService } from '../share/service/subject-data.service';
     HttpClientModule,
     ShareModule,
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
   ],
   providers: [
     ApiService,
-    SubjectDataService
+    SubjectDataService,
+    NotificationService
   ]
 })
 export class CompanyModule { }
